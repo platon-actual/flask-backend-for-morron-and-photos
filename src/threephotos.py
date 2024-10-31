@@ -15,20 +15,14 @@ app = Flask(__name__)
 def show_images():
     return render_template('index.html', images=[NAME_IMAGE_1, NAME_IMAGE_2, NAME_IMAGE_3])
 
+@app.route('/ojoalaji')
+def show_morron_albahaca():
+    return render_template('live_plants.html')
+
 @app.route('/post_image', methods=['POST'])
 def upload_image():
     image = request.files['image']
-    print (image.content_type)
-    #Vemos, en orden del 1 al 3, si existen las imágenes
-    # Si existe, sigo a la siguiente, sino existe, la guardo allí.
-    # # TODO que mueva las imágenes como un caroussel, la índice 1 al 2, la 2 al 3, y la NUEVA a la 1
-    # if (not image_exists(NAME_IMAGE_1)):
-    #     save_image(NAME_IMAGE_1, image)
-    # elif ((not image_exists(NAME_IMAGE_2)) and (image_exists[NAME_IMAGE_3])):
-    #     save_image(NAME_IMAGE_2, image)
-    # elif (not image_exists(NAME_IMAGE_3)):
-    #     save_image(NAME_IMAGE_3, image)
-    
+    print (image.content_type)    
     move_images(image)
     
     # return url_for('show_images')
@@ -61,9 +55,8 @@ def copy_image(origin, destination):
     shutil.copy(origin_path, destination_path)
 
 def move_images(new_image):
-    # Si hay 3 imágenes:
+    # Si hay al menos 2 imágenes:
     if image_exists(NAME_IMAGE_2):
-        # Si hay 2 imágenes.. (ver else:)
         copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
         copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
         save_image(NAME_IMAGE_1, new_image)
@@ -71,9 +64,9 @@ def move_images(new_image):
         if not image_exists(NAME_IMAGE_1):
             save_image(NAME_IMAGE_1, new_image)
         else:
-            # copy_image(NAME_IMAGE_2, NAME_IMAGE_3)
             copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
             save_image(NAME_IMAGE_1, new_image)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=4000)
+    # app.run()
