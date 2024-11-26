@@ -8,11 +8,27 @@
 </head>
 <body>
     <header>
-        <h1>Live feed of the picante.</h1>
-        <h3><a href="./index.html">Volver a la página de Flask anterior hecha por Ramiro.</a></h3>
+        <nav><a href="/">[HOME/INICIO]</a></nav>
+        <h1>Vea el ají Morrón!</h1>
+        <h3>El ají está en vivo una vez al día, tal vez se sume una albahaca al proyecto.</h3>
+        <h2><a href="/ojoalaji">Vea aquí en vivo!</a></h2>
+        <!-- <h3><a href="./index.html">Volver a la página de Flask anterior hecha por Ramiro.</a></h3> -->
     </header>
     <main>
-        <img class="ojoenelaji" src="../static/downloads/images/la_imagen_1.jpg" alt="Bell Pepper live feed">
+        <section>
+            <h3>Last image of the picante:</h3>
+            <img class="ojoenelaji" src="../static/downloads/images/la_imagen_1.jpg" alt="Bell Pepper live feed">
+            <form action="/post_image" method="post" enctype="multipart/form-data">
+                <label for="image_input">Seleccione una imágen:</label>
+                <input type="file" name="image_input" id="image_input">
+                <input type="submit" value="Subir Imágen">
+            </form>
+        </section>
+        <section>
+            <h3>Vea este proyecto que, se alimenta a través de Telegram:</h3>
+            <h4><a href="https://t.me/demotextbot" target="_blank">[Este es el bot, abre en nueva ventana, o abralo en el teléfono móvil]</a></h4>
+            <h4><a href="/threephotosbot">[Haga click acá para ver las últimas imágenes desde la web]</a></h4>
+        </section>
     </main>
     <footer>
         <address><a href="https://linkedin.com/in/ramiroivanrios" target="_blank">Ramiro Ríos @ Linkedin</a></address>

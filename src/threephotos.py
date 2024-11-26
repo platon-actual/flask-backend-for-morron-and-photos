@@ -13,15 +13,21 @@ app = Flask(__name__)
 
 @app.route('/')
 def show_images():
-    return render_template('index.html', images=[NAME_IMAGE_1, NAME_IMAGE_2, NAME_IMAGE_3])
+    # return render_template('index.html', images=[NAME_IMAGE_1, NAME_IMAGE_2, NAME_IMAGE_3])
+    return render_template('live_plants.html')
+
+@app.route('/threephotosbot')
+def show_threephotos():
+    return render_template('threephotos.html', images=[NAME_IMAGE_1, NAME_IMAGE_2, NAME_IMAGE_3])
 
 @app.route('/ojoalaji')
 def show_morron_albahaca():
     return render_template('live_plants.html')
+    
 
 @app.route('/post_image', methods=['POST'])
 def upload_image():
-    image = request.files['image']
+    image = request.files['image_input']
     print (image.content_type)    
     move_images(image)
     
@@ -67,6 +73,12 @@ def move_images(new_image):
             copy_image(NAME_IMAGE_1, NAME_IMAGE_2)
             save_image(NAME_IMAGE_1, new_image)
 
+def check_directory(dir_path):
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+
 if __name__ == '__main__':
+    # Crear carpetas download/images si no existe:
+    check_directory(os.path.join(app.root_path, IMAGES_FOLDER))
     app.run(debug=True, host='0.0.0.0', port=4000)
     # app.run()
