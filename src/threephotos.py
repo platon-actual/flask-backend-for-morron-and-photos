@@ -34,6 +34,12 @@ def upload_image():
     # return url_for('show_images')
     return redirect('/')
 
+@app.route('/post_pepper_morron', methods=['POST'])
+def get_morron_image():
+    morron_image = request.files['morron_image']
+    save_image("morron.jpg", morron_image)
+    return redirect('/')
+
 @app.route('/test')
 def test():
     destination_path = os.path.join(app.root_path, IMAGES_FOLDER + "la_imagen2.jpg")

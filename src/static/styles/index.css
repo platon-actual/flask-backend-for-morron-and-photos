@@ -3,6 +3,10 @@ img {
     width: auto;
 }
 
+img.ojoenelaji {
+    rotate: 270deg;
+}
+
 form {
     padding: 2rem;
     border: 2px solid black;
