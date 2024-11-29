@@ -22,7 +22,7 @@ Copyright 2024 Ramiro Iván Ríos.
 --- enviar la imágen al backend web
 --- procesar la imágen en el backend... No se puede con una cuenta gratis XD porque tiene 500mb de espacio y OpenCV ocupa más de eso.
 
-## Opción 3, el salvador de siempre: JAVASCRIPT
+## Opción 3, el salvador de siempre: JAVASCRIPT (no mentira, es CSS)
 - voy a rotar la imágen con un poco de magia de JS CSS HTML y esas yerbas.
 - por el momento actual, la idea es desplegar un archivo python como servicio.
 - el servicio saca una foto cada X tiempo
