@@ -4,9 +4,15 @@ import subprocess
 import requests
 import os
 
-print("Creando carpeta con subprocess...")
-subprocess.run(['mkdir','photos_morron'])
-print("Fin.")
+print("Buggy Bug: matando el proceso anterior de la cámara.")
+subprocess.run(['pkill','-f','rpicam-still'])
+
+if not os.path.exists('photos_morron'):
+    print("Creando carpeta con subprocess...")
+    subprocess.run(['mkdir','photos_morron'])
+else:
+    print(f"Carpeta {'photos_morron'} ya existe.")
+
 
 print("Sacando foto con subp.")
 
